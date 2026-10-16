@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@theme {
+  --font-anton: "Anton";
+  --font-syne: "Syne";
+  --font-bricolage: "BricolageGrotesque";
+  --font-jakarta: "Plus Jakarta";
+  --color-border: var(--border);
+  --color-background: oklch(99.5% 0 0);
+  --color-foreground: oklch(12% 0 0);
+  --color-muted: oklch(96.5% 0 0);
+  --color-muted-foreground: oklch(42% 0 0);
+  --color-primary: oklch(12% 0 0);
+  --color-primary-foreground: oklch(99% 0 0);
+  --color-secondary: oklch(96% 0 0);
+  --color-border: oklch(90% 0 0);
+  --color-ring: oklch(12% 0 0);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+}
+
+@font-face {
+  font-family: "BricolageGrotesque";
+  src: url("assets/BricolageGrotesque.ttf");
+  font-weight: 100 800;
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("assets/Anton-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Syne";
+  src: url("assets/Syne.ttf");
+  font-weight: 100 900;
+}
+@font-face {
+  font-family: "Plus Jakarta";
+  src: url("assets/PlusJakartaSans-VariableFont_wght.ttf");
+  font-weight: 100 900;
+}
+
+@keyframes marquee {
+  100% {
+    transform: translate(-50%);
+  }
+}
+
+/* Custom CSS */
+.animate-marquee {
+  animation: 28s linear 0s infinite normal none running marquee;
+}
+
+body {
+  @apply font-jakarta;
+}
+
+.preview img {
+  width: 100%;
+  display: block;
+  transform: translateY(0);
+  transition: none;
+  will-change: transform;
+}
+
+.preview:hover img {
+  transform: translateY(calc(-100% + 300px)); /* scroll to bottom */
+  transition: transform 60s linear;
+}

@@ -25,31 +25,12 @@ import { useState } from "react";
 
 export default function Landing() {
   const [openIndex, setOpenIndex] = useState(null);
+
   return (
-    <main className=" px-6 bg-[#FAF9F5]">
+    <main id="top" className="bg-[#FAF9F5]">
       <header className="fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 border-b border-transparent bg-transparent">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 md:h-20 lg:px-8">
           <a href="#top" className="group flex items-center gap-2.5">
-            <span className="transition-transform duration-500 ease-out group-hover:rotate-[8deg]">
-              <svg
-                width="34"
-                height="34"
-                viewBox="0 0 64 64"
-                fill="none"
-                aria-hidden="true"
-                className="shrink-0"
-              >
-                <rect width="64" height="64" rx="16" fill="#1B4D3E"></rect>
-                <circle
-                  cx="32"
-                  cy="34"
-                  r="13"
-                  stroke="#FAF9F5"
-                  strokeWidth="3.5"
-                ></circle>
-                <circle cx="44" cy="17" r="5" fill="#34D399"></circle>
-              </svg>
-            </span>
             <span className="font-bricolage text-xl tracking-tight text-[#161A18]">
               Eghosa Ordia
             </span>
@@ -181,13 +162,13 @@ export default function Landing() {
                 Book a free call
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
-              <button
-                type="button"
+              <a
+                href="#work"
                 className="group inline-flex items-center gap-2 rounded-full border border-[#1B4D3E]/25 bg-transparent px-7 py-4 text-sm font-semibold text-[#1B4D3E] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1B4D3E] hover:bg-white"
               >
                 See my work
                 <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
-              </button>
+              </a>
             </div>
             <div
               className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3"
@@ -644,7 +625,7 @@ export default function Landing() {
         </div>
       </section>
 
-      <section id="work" data-testid="work-section" className="py-20 md:py-32">
+      <section id="work" className="py-20 md:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div style={{ transform: "none", opacity: 1 }}>
@@ -665,10 +646,7 @@ export default function Landing() {
             </div>
           </div>
           <div className="mt-20 space-y-24 md:space-y-32">
-            <article
-              data-testid="project-1"
-              className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
-            >
+            <article className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
               <div style={{ transform: "none", opacity: 1 }}>
                 <div className="group relative">
                   <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-[#10B981]/[0.07] blur-2xl transition-opacity duration-700 group-hover:bg-[#10B981]/[0.14]"></div>
@@ -677,7 +655,7 @@ export default function Landing() {
                       <img
                         alt="Paulsconnect online store with self-checkout"
                         loading="lazy"
-                        className="w-full transition-all duration-300 grayscale-100 group-hover:grayscale-0"
+                        className="w-full transition-all duration-300"
                         src={MEDIA.paulsconnectBg}
                       />
                       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#1B4D3E]/25 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"></div>
@@ -766,7 +744,7 @@ export default function Landing() {
                       <img
                         alt="De Glamour Aerobics landing page"
                         loading="lazy"
-                        className="w-full transition-all duration-300 grayscale-100 group-hover:grayscale-0"
+                        className="w-full transition-all duration-300"
                         src={MEDIA.deglamouraerobicsBg}
                       />
                       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#1B4D3E]/25 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"></div>
@@ -785,7 +763,7 @@ export default function Landing() {
                         De Glamour Aerobics
                       </h3>
                       <p className="mt-1 font-mono text-xs font-medium uppercase tracking-[0.18em] text-[#525A56]">
-                        Fitness studio · Session booking
+                        Fitness studio
                       </p>
                     </div>
                   </div>
@@ -797,8 +775,9 @@ export default function Landing() {
                         They needed
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#525A56] sm:text-base">
-                        Class sign-ups happened over phone and WhatsApp, with
-                        no-shows and forgotten payments piling up.
+                        A simple, credible website to give their community a
+                        home online beyond social media, so new people could
+                        find them and understand what they're about.
                       </p>
                     </div>
                     <div>
@@ -806,17 +785,10 @@ export default function Landing() {
                         What I built
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[#525A56] sm:text-base">
-                        A booking site where members pick a session, pay ahead
-                        and get reminded automatically.
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-[#059669]">
-                        The result
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-[#525A56] sm:text-base">
-                        Fewer no-shows, every payment tracked, and a front desk
-                        that finally stays quiet.
+                        A responsive landing page that shows off the group's
+                        real personality and community, with clear sections like
+                        schedule, gallery, and contact so visitors can quickly
+                        see what the group offers and get involved.
                       </p>
                     </div>
                   </div>
@@ -827,7 +799,6 @@ export default function Landing() {
                       href="https://deglamouraerobics.com"
                       target="_blank"
                       rel="noopener noreferrer"
-                      data-testid="project-2-live-link"
                       className="group mt-6 inline-flex items-center gap-2 rounded-full border border-[#1B4D3E]/25 px-6 py-3 text-sm font-semibold text-[#1B4D3E] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1B4D3E] hover:bg-[#1B4D3E] hover:text-white"
                     >
                       Visit deglamouraerobics.com
@@ -890,7 +861,7 @@ export default function Landing() {
                   Build
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#525A56]">
-                  I design and build your system in 2–4 weeks, with a short
+                  I design and build your system in 2-12 weeks, with a short
                   video update every week so you always know where things stand.
                 </p>
               </div>
@@ -1242,7 +1213,7 @@ export default function Landing() {
             </div>
             <div style={{ transform: "none", opacity: 1 }}>
               <a
-                href="mailto:hello@eghosaordia.cv"
+                href="mailto:eghordia130@gmail.com"
                 className="group relative flex h-full flex-col rounded-3xl border p-7 transition-all duration-500 hover:-translate-y-1.5 border-[#1B4D3E]/10 bg-white hover:border-[#1B4D3E]/30 hover:shadow-[0_24px_48px_-28px_rgba(27,77,62,0.35)]"
               >
                 <div className="flex items-center justify-between">
@@ -1256,7 +1227,7 @@ export default function Landing() {
                   Email
                 </p>
                 <p className="mt-2 break-all text-base font-semibold tracking-tight text-[#161A18]">
-                  hello@eghosaordia.cv
+                  eghordia130@gmail.com
                 </p>
                 <p className="mt-1.5 text-xs leading-relaxed text-[#525A56]">
                   Good for detailed briefs
@@ -1303,7 +1274,7 @@ export default function Landing() {
             </div>
             <div style={{ transform: "none", opacity: 1 }}>
               <a
-                href="https://instagram.com/eghosaordia"
+                href="https://instagram.com/eghosa.ordia"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex h-full flex-col rounded-3xl border p-7 transition-all duration-500 hover:-translate-y-1.5 border-[#1B4D3E]/10 bg-white hover:border-[#1B4D3E]/30 hover:shadow-[0_24px_48px_-28px_rgba(27,77,62,0.35)]"
@@ -1377,8 +1348,8 @@ export default function Landing() {
                 © 2026 Eghosa Ordia — websites &amp; apps that run your business
               </p>
             </div>
-            <button
-              type="button"
+            <a
+              href="#top"
               className="group inline-flex items-center gap-2 rounded-full border border-[#1B4D3E]/20 px-5 py-2.5 text-sm font-semibold text-[#1B4D3E] transition-all duration-300 hover:border-[#1B4D3E] hover:bg-[#1B4D3E] hover:text-white"
             >
               Back to top
@@ -1387,7 +1358,7 @@ export default function Landing() {
                 height={24}
                 className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5"
               />
-            </button>
+            </a>
           </div>
         </div>
       </footer>

@@ -21,10 +21,25 @@ import {
   X,
 } from "lucide-react";
 import { FAQS, MEDIA } from "../lib/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const navLinks = [
+  { label: "Services", href: "#services" },
+  { label: "Work", href: "#work" },
+  { label: "Process", href: "#process" },
+  { label: "About", href: "#about" },
+  { label: "FAQ", href: "#faq" },
+];
 
 export default function Landing() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <main id="top" className="bg-[#FAF9F5]">
@@ -86,11 +101,51 @@ export default function Landing() {
           </nav>
           <button
             type="button"
-            aria-label="Open menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMenuOpen((o) => !o)}
             className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#1B4D3E]/15 bg-white text-[#161A18] md:hidden"
           >
-            <Menu className="w-5 h-5" />
+            {menuOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
+
+          <div
+            id="mobile-menu"
+            aria-hidden={!menuOpen}
+            className={`absolute right-4 top-full mt-2 w-64 origin-top-right rounded-2xl border border-[#1B4D3E]/10 bg-white p-2 shadow-xl md:hidden
+      transition-[opacity,transform,visibility] duration-200 ease-out
+      ${
+        menuOpen
+          ? "visible scale-100 translate-y-0 opacity-100"
+          : "invisible scale-95 -translate-y-2 opacity-0"
+      }`}
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="block rounded-xl px-4 py-3 text-sm font-medium text-[#525A56] transition-colors hover:bg-[#1B4D3E]/5 hover:text-[#161A18]"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href="https://wa.me/2348133560042?text=Hi%20Eghosa%2C%20I%27d%20like%20to%20book%20a%20free%20call%20about%20a%20system%20for%20my%20business."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="mt-2 flex items-center justify-center gap-1.5 rounded-full bg-[#1B4D3E] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#143B30]"
+            >
+              Book a free call
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </header>
 
